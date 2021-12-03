@@ -1,1 +1,3 @@
-# otus-mssql-klinin
+Домашние задания курса OTUS "MS SQL Server разработчик".
+
+Группа 2021-12-Evraz.
