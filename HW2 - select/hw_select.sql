@@ -41,8 +41,7 @@ SELECT s.SupplierID, s.SupplierName
 FROM Purchasing.Suppliers AS s
 LEFT JOIN Purchasing.PurchaseOrders AS p
  ON s.SupplierID = p.SupplierID
-GROUP BY s.SupplierID, s.SupplierName
-HAVING COUNT(p.PurchaseOrderID) = 0
+WHERE p.PurchaseOrderID IS NULL
 
 /*
 3. Заказы (Orders) с ценой товара (UnitPrice) более 100$ 
@@ -123,7 +122,7 @@ JOIN Purchasing.PurchaseOrders AS po
 JOIN Application.People AS p
  ON po.ContactPersonID = p.PersonID
 WHERE DeliveryMethodName LIKE '%Air Freight'
-AND MONTH(po.ExpectedDeliveryDate) = 1 AND YEAR(po.ExpectedDeliveryDate) = 2013
+AND po.ExpectedDeliveryDate BETWEEN '2013-01-01' AND '2013-01-31'
 AND po.IsOrderFinalized = 1
 
 /*
